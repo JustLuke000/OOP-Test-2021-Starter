@@ -1,27 +1,34 @@
 package ie.tudublin;
 
-public class Note {
-    
-    private char note;
+public class Note 
+{
+    private char noteC;
     private int duration;
     private String type;
     
-    public Note(char note, int duration) {
-        this.note = note;
+    public Note()
+    {
+        noteC = 0;
+        duration = 0;
+    }
+
+    public Note(char note, int duration, String type) {
+        this.noteC = note;
         this.duration = duration;
+        this.type = type;
     }
 
     @Override
     public String toString() {
-        return "Note [duration=" + duration + ", note=" + note + "]";
+        return noteC + "     " + duration + "     " + getType();
     }
 
     public char getNote() {
-        return note;
+        return noteC;
     }
 
     public void setNote(char note) {
-        this.note = note;
+        this.noteC = note;
     }
 
     public int getDuration() {
@@ -33,8 +40,6 @@ public class Note {
     }
 
     public String getType() {
-        if ( duration == 1) type = "Quaver";
-        if ( duration == 2) type = "Crotchet";
         return type;
     }
 
