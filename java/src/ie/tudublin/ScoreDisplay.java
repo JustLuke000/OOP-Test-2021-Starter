@@ -37,72 +37,135 @@ public class ScoreDisplay extends PApplet
 		background(0);
 		float border = 0.1f * width;
 		int circleSize = 15;
-		// 5 Strave Lines
+		// Displaying 5 Strave Lines
 		stroke(255);
 		for (int i = 0; i < 5; i ++)
 		{
-			Note displayString = notes.get(i);
-			char displayNote= displayString.getNote();
-			float x = map(i, 0, 5, border, width - border);
 			float y = map(i, 0, 5, border * 2, height - border);
 			line(border, y, width - border, y);
 		}
 		
+		// Displaying Score
 		for (int i = 0; i < score.length(); i ++)
 		{
 			Note displayString = notes.get(i);
 			char displayNote= displayString.getNote();
 			float x = map(i, 0, score.length(), border, width - border);
-			float y = map(i, -4, 5, border, height - border);			
-			text(displayNote, x, height/3);
+			if ( displayNote != '2')
+			{
+				text(displayNote, x, height/3);
+			}			
 		}
 
+		// Displaying Notes
 		for (int i = 0; i < score.length(); i ++)
 		{
+			colorMode(RGB);
 			float x = map(i, 0, score.length(), border, width - border) + 10;
 			Note displayString = notes.get(i);
 			char displayNote = displayString.getNote();
 			float y;
+			fill(255, 255, 255);
+			stroke(255, 255, 255);
 			switch(displayNote)
 			{
 				case 'D':
 				{
+					
 					y = map(1, 0, 10, height - border, border * 2);
+					
+					if ( mouseX < x + circleSize && mouseY < y + circleSize &&  mouseX > x - circleSize && mouseY > y - circleSize)
+					{
+						fill(255, 0, 0);
+						stroke(255, 0, 0);
+					}
+
 					break;
 				}
 				case 'E':
 				{
+					
 					y = map(2, 0, 10, height - border, border * 2);
+
+					if ( mouseX < x + circleSize && mouseY < y + circleSize &&  mouseX > x - circleSize && mouseY > y - circleSize)
+					{
+						fill(255, 0, 0);
+						stroke(255, 0, 0);
+					}
+
 					break;
 				}
 				case 'F':
 				{
+					
 					y = map(3, 0, 10, height - border, border * 2);
+
+					if ( mouseX < x + circleSize && mouseY < y + circleSize &&  mouseX > x - circleSize && mouseY > y - circleSize)
+					{
+						fill(255, 0, 0);
+						stroke(255, 0, 0);
+					}
+					
 					break;
 				}
 				case 'G':
 				{
 					y = map(4, 0, 10, height - border, border * 2);
+					
+					if ( mouseX < x + circleSize && mouseY < y + circleSize &&  mouseX > x - circleSize && mouseY > y - circleSize)
+					{
+						fill(255, 0, 0);
+						stroke(255, 0, 0);
+					}
+					
 					break;
 				}
 				case 'A':
 				{
 					y = map(5, 0, 10, height - border, border * 2);
+					
+					if ( mouseX < x + circleSize && mouseY < y + circleSize &&  mouseX > x - circleSize && mouseY > y - circleSize)
+					{
+						fill(255, 0, 0);
+						stroke(255, 0, 0);
+					}
+					
 					break;
 				}
 				case 'B':
 				{
 					y = map(6, 0, 10, height - border, border * 2);
+					
+					if ( mouseX < x + circleSize && mouseY < y + circleSize &&  mouseX > x - circleSize && mouseY > y - circleSize)
+					{
+						fill(255, 0, 0);
+						stroke(255, 0, 0);
+					}
+					
 					break;
 				}
 				case 'c':
 				{
 					y = map(7, 0, 10, height - border, border * 2);
+					
+					if ( mouseX < x + circleSize && mouseY < y + circleSize &&  mouseX > x - circleSize && mouseY > y - circleSize)
+					{
+						fill(255, 0, 0);
+						stroke(255, 0, 0);
+					}
+					
 					break;
 				}
 				case 'd':
 				{
 					y = map(8, 0, 10, height - border, border * 2);
+					
+					if ( mouseX < x + circleSize && mouseY < y + circleSize &&  mouseX > x - circleSize && mouseY > y - circleSize)
+					{
+						fill(255, 0, 0);
+						stroke(255, 0, 0);
+					}
+					
 					break;
 				}
 				default:
