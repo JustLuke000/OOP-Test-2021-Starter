@@ -10,7 +10,24 @@ public class ScoreDisplay extends PApplet
 	String score = "DEFGABcd";
 	//String score = "D2E2F2G2A2B2c2d2";
 	//String score = "DEF2F2F2EFA2A2B2AFD2E2D2D2D2";
+	Note[] notes;
 	
+	public void loadScore()
+	{
+		for (int i = 0; i < score.length(); i++)
+		{
+			notes[i].setNote(score.charAt(i));
+		}
+	}
+
+	public void printScore()
+	{
+		for (int i = 0; i < notes.length; i++)
+		{
+			System.out.println(notes[i].getNote() + "	" + notes[i].getDuration() + "	" + notes[i].getType());
+		}
+	}
+
 	public void settings()
 	{
 		size(1000, 500);
@@ -34,5 +51,6 @@ public class ScoreDisplay extends PApplet
 
 	void drawNotes()
 	{
+
 	}
 }
