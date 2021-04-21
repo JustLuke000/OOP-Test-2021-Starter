@@ -27,12 +27,32 @@ public class ScoreDisplay extends PApplet
 	{
 		loadScore();
 		printScore();
+		//drawNotes();
 	}
 
 	public void draw()
 	{
-		background(255);
-		
+		background(0);
+		float border = 0.1f * width;
+
+		for (int i = 0; i < 5; i ++)
+		{
+			Note displayString = notes.get(i);
+			char displayNote= displayString.getNote();
+			float x = map(i, -4, 5, border, width - border);
+			float y = map(i, -4, 5, border, height - border);
+			line(border, y, width - border, y);
+		}
+
+		for (int i = 0; i < score.length(); i ++)
+		{
+			Note displayString = notes.get(i);
+			char displayNote= displayString.getNote();
+			float x = map(i, 0, score.length(), border, width - border);
+			float y = map(i, -4, 5, border, height - border);
+
+			text(displayNote, x, height/2);
+		}
 	}
 
 	public void loadScore()
@@ -74,6 +94,7 @@ public class ScoreDisplay extends PApplet
 			System.out.println(notes.get(i));
 			//System.out.println(notes[i].getNote() + "	" + notes[i].getDuration() + "	" + notes[i].getType());
 		}
+
 	}
 
 
