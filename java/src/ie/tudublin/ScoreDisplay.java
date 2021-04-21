@@ -1,7 +1,7 @@
 package ie.tudublin;
 
 import java.util.ArrayList;
-
+import ddf.minim.*;
 import processing.core.PApplet;
 
 public class ScoreDisplay extends PApplet
@@ -13,6 +13,8 @@ public class ScoreDisplay extends PApplet
 	// Note[] notes;
 	//String score = "dEFGBcdDDF";
 	ArrayList<Note> notes = new ArrayList<Note>();
+	Minim minim;
+	AudioOutput playNote;
 
 	public void settings()
 	{
@@ -27,6 +29,8 @@ public class ScoreDisplay extends PApplet
 
 	public void setup() 
 	{
+		minim = new Minim(this);
+		playNote = minim.getLineOut();
 		loadScore();
 		printScore();
 		//drawNotes();
@@ -34,11 +38,11 @@ public class ScoreDisplay extends PApplet
 
 	public void draw()
 	{
-		background(0);
+		background(255);
 		float border = 0.1f * width;
 		int circleSize = 15;
 		// Displaying 5 Strave Lines
-		stroke(255);
+		stroke(0);
 		for (int i = 0; i < 5; i ++)
 		{
 			float y = map(i, 0, 5, border * 2, height - border);
@@ -48,6 +52,8 @@ public class ScoreDisplay extends PApplet
 		// Displaying Score
 		for (int i = 0; i < score.length(); i ++)
 		{
+			fill(0, 0, 0);
+			stroke(0, 0 ,0);
 			Note displayString = notes.get(i);
 			char displayNote= displayString.getNote();
 			float x = map(i, 0, score.length(), border, width - border);
@@ -57,7 +63,7 @@ public class ScoreDisplay extends PApplet
 			}			
 		}
 
-		// Displaying Notes
+		// Displaying and playing Notes
 		for (int i = 0; i < score.length(); i ++)
 		{
 			colorMode(RGB);
@@ -65,8 +71,8 @@ public class ScoreDisplay extends PApplet
 			Note displayString = notes.get(i);
 			char displayNote = displayString.getNote();
 			float y;
-			fill(255, 255, 255);
-			stroke(255, 255, 255);
+			fill(0);
+			stroke(0);
 			switch(displayNote)
 			{
 				case 'D':
@@ -78,6 +84,7 @@ public class ScoreDisplay extends PApplet
 					{
 						fill(255, 0, 0);
 						stroke(255, 0, 0);
+						playNote.playNote(0, 1, "D");
 					}
 
 					break;
@@ -91,6 +98,7 @@ public class ScoreDisplay extends PApplet
 					{
 						fill(255, 0, 0);
 						stroke(255, 0, 0);
+						playNote.playNote(0, 1, "E");
 					}
 
 					break;
@@ -104,6 +112,7 @@ public class ScoreDisplay extends PApplet
 					{
 						fill(255, 0, 0);
 						stroke(255, 0, 0);
+						playNote.playNote(0, 1, "F");
 					}
 					
 					break;
@@ -116,6 +125,7 @@ public class ScoreDisplay extends PApplet
 					{
 						fill(255, 0, 0);
 						stroke(255, 0, 0);
+						playNote.playNote(0, 1, "G");
 					}
 					
 					break;
@@ -128,6 +138,7 @@ public class ScoreDisplay extends PApplet
 					{
 						fill(255, 0, 0);
 						stroke(255, 0, 0);
+						playNote.playNote(0, 1, "A");
 					}
 					
 					break;
@@ -140,6 +151,7 @@ public class ScoreDisplay extends PApplet
 					{
 						fill(255, 0, 0);
 						stroke(255, 0, 0);
+						playNote.playNote(0, 1, "B");
 					}
 					
 					break;
@@ -152,6 +164,7 @@ public class ScoreDisplay extends PApplet
 					{
 						fill(255, 0, 0);
 						stroke(255, 0, 0);
+						playNote.playNote(0, 1, 523);
 					}
 					
 					break;
@@ -164,6 +177,7 @@ public class ScoreDisplay extends PApplet
 					{
 						fill(255, 0, 0);
 						stroke(255, 0, 0);
+						playNote.playNote(0, 1, 587);
 					}
 					
 					break;
@@ -180,6 +194,7 @@ public class ScoreDisplay extends PApplet
 				{
 					circle(x, y, circleSize);
 					line(x + circleSize / 2, y, x + circleSize / 2, y - 40);
+					line(x + circleSize / 2, y - 40, x + circleSize , y - 20);
 				}
 				
 		}
@@ -228,9 +243,4 @@ public class ScoreDisplay extends PApplet
 
 	}
 
-
-	void drawNotes()
-	{
-
-	}
 }
