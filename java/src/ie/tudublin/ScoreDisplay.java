@@ -218,24 +218,31 @@ public class ScoreDisplay extends PApplet
 		// For Loop to irerate through each note (Note notes)
 		for (int i = 0; i < score.length(); i++)
 		{
+			int skipper = 0;
 			char currentNote = score.charAt(i);
 			if ( i != score.length() - 1)
 			{
-				if ( score.charAt(i) == 2)
+				if ( score.charAt(i + 1) == 2) 								// If the note is played Twice -- I am aware it should be (50) or '2', but this crashed the program
 				{
-					notes.add(new Note(currentNote, 2, "Crotchet"));
-					i++; // To Increment past the Crotchet
-				} 	// End Inner If
+					notes.add(new Note(currentNote, 2, "Crotchet"));		// Creates Note (with respective Characteristics) and is added to Array List
+					skipper++;												// Skips past "2" -- x2 Duration
+				} 															// End Inner If
 				else
 				{
-					notes.add(new Note(currentNote, 1, "Quaver"));
-				} 	// End Inner Else
-			} 		// End If
+					notes.add(new Note(currentNote, 1, "Quaver"));			// Creates Note (with respective Characteristics) and is added to Array List
+				} 															// End Inner Else
+				
+			} 																// End If
 			else
 			{
-				notes.add(new Note(currentNote, 1, "Quaver"));
-			} 		// End Else
-		}			// End For
+				notes.add(new Note(currentNote, 1, "Quaver"));				// Creates Note (with respective Characteristics) and is added to Array List
+			} 																// End Else
+
+			if ( skipper == 1)
+			{
+				i = i + 1;
+			}
+		}	 																// End For
 	}// End Method: loadScore()
 
 	public void printScore()
